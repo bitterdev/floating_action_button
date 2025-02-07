@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concrete5-cif version="1.0">
+    <singlepages>
+        <page name="Floating Action Button" path="/dashboard/floating_action_button"
+              filename="/dashboard/floating_action_button.php" package="floating_action_button"/>
+        <page name="Settings" path="/dashboard/floating_action_button/settings"
+              filename="/dashboard/floating_action_button/settings.php" package="floating_action_button"/>
+    </singlepages>
+</concrete5-cif>

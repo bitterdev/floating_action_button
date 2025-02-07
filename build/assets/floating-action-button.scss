@@ -1,0 +1,49 @@
+html {
+  body {
+    .ccm-page {
+      .floating-action-button {
+        --action-button-spacing: 15px;
+
+        position: fixed;
+        bottom: var(--action-button-spacing);
+        z-index: 99999;
+        opacity: 0;
+        visibility: hidden;
+
+        &.align-left {
+          left: var(--action-button-spacing);
+        }
+
+        &.align-right {
+          right: var(--action-button-spacing);
+        }
+
+        &:not(.visible) {
+          transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
+        }
+
+        &.visible {
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
+        }
+
+        &.fade-in {
+
+        }
+
+        &.fade-out {
+
+        }
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
