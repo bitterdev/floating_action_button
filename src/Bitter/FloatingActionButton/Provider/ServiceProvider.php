@@ -8,6 +8,7 @@ use Concrete\Core\Entity\Site\Site;
 use Concrete\Core\File\File;
 use Concrete\Core\Foundation\Service\Provider;
 use Concrete\Core\Html\Service\Html;
+use Concrete\Core\Localization\Localization;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Entity\File\File as FileEntity;
 use Concrete\Core\Support\Facade\Url;
@@ -39,14 +40,15 @@ class ServiceProvider extends Provider
                 /** @var Site $site */
                 $site = $this->app->make('site')->getSite();
                 $config = $site->getConfigRepository();
-                $align = $config->get("floating_action_button.align");
-                $fadeIn = (bool)$config->get("floating_action_button.fade_in");
-                $fadeOut = (bool)$config->get("floating_action_button.fade_out");
-                $targetPageId = (int)$config->get("floating_action_button.target_page_id");
+                $locale = Localization::getInstance()->getLocale();
+                $align = $config->get("floating_action_button." . $locale . ".align");
+                $fadeIn = (bool)$config->get("floating_action_button." . $locale . ".fade_in");
+                $fadeOut = (bool)$config->get("floating_action_button." . $locale . ".fade_out");
+                $targetPageId = (int)$config->get("floating_action_button." . $locale . ".target_page_id");
                 $targetPage = Page::getByID($targetPageId);
-                $imageFileId = (int)$config->get("floating_action_button.image_file_id");
+                $imageFileId = (int)$config->get("floating_action_button." . $locale . ".image_file_id");
                 $imageFile = File::getByID($imageFileId);
-                $imageSize = (int)$config->get("floating_action_button.image_size", 80);
+                $imageSize = (int)$config->get("floating_action_button." . $locale . ".image_size", 80);
 
                 if (!$targetPage->isError() &&
                     $imageFile instanceof FileEntity &&
