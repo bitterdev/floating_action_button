@@ -2,6 +2,7 @@
 
 namespace Bitter\FloatingActionButton\Provider;
 
+use Bitter\FloatingActionButton\Routing\RouteList;
 use Concrete\Core\Application\Application;
 use Concrete\Core\Entity\File\Version;
 use Concrete\Core\Entity\Site\Site;
@@ -11,6 +12,7 @@ use Concrete\Core\Html\Service\Html;
 use Concrete\Core\Localization\Localization;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Entity\File\File as FileEntity;
+use Concrete\Core\Routing\RouterInterface;
 use Concrete\Core\Support\Facade\Url;
 use Concrete\Core\View\View;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -18,15 +20,19 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 class ServiceProvider extends Provider
 {
     protected EventDispatcherInterface $eventDispatcher;
+    protected RouterInterface $router;
 
     public function __construct(
         Application              $app,
-        EventDispatcherInterface $eventDispatcher
+        EventDispatcherInterface $eventDispatcher,
+        RouterInterface          $router
     )
     {
         parent::__construct($app);
 
         $this->eventDispatcher = $eventDispatcher;
+
+        $this->router = $router;
     }
 
     public function register()
@@ -77,5 +83,7 @@ class ServiceProvider extends Provider
                 }
             }
         });
+
+        $this->router->loadRouteList(new RouteList());
     }
 }

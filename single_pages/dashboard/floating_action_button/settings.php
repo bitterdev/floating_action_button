@@ -39,6 +39,10 @@ foreach($locales as $locale => $languageName) {
 echo $ui->tabs($tabs);
 ?>
 
+<div class="ccm-dashboard-header-buttons">
+    <?php \Concrete\Core\View\View::element("dashboard/help", [], "floating_action_button"); ?>
+</div>
+
 <form action="#" method="post">
     <?php echo $token->output("update_settings"); ?>
 
