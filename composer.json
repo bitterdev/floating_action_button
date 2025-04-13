@@ -1,5 +1,10 @@
 {
   "name": "bitter/floating_action_button",
   "type": "concrete5-package",
-  "description": "The Floating Action Button add-on for Concrete CMS adds a customizable action button."
+  "description": "The Floating Action Button add-on for Concrete CMS adds a customizable action button.",
+  "autoload": {
+    "psr-4": {
+      "Bitter\\FloatingActionButton\\": "src/Bitter/FloatingActionButton"
+    }
+  }
 }
