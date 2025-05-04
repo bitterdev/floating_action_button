@@ -43,6 +43,8 @@ echo $ui->tabs($tabs);
     <?php \Concrete\Core\View\View::element("dashboard/help", [], "floating_action_button"); ?>
 </div>
 
+<?php \Concrete\Core\View\View::element("dashboard/did_you_know", [], "floating_action_button"); ?>
+
 <form action="#" method="post">
     <?php echo $token->output("update_settings"); ?>
 
